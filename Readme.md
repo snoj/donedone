@@ -1,6 +1,6 @@
 # donedone
 
-Downdown is for when complex chains or an unknown number of events need to be completed. It is inspired by the C# System.Threading.CountdownEvent class.
+Donedone is for when complex chains or an unknown number of events need to be completed. It is inspired by the C# System.Threading.CountdownEvent class.
 
 # Usage
 
