@@ -1,0 +1,17 @@
+{
+  "name": "donedone",
+  "version": "0.0.1",
+  "description": "Downdown is meant for instances where complex chains or an unknown number of events need to be completed.",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": { },
+  "keywords": [
+    "countdown",
+    "event",
+    "completion"
+  ],
+  "author": "Josh Erickson",
+  "license": "MIT"
+}
