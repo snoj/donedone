@@ -40,6 +40,8 @@ countdown.signal();
 
 ## Initialization of resources
 
+*Subject to change. Working on converting to use the donedone prototype instead of a custom object.*
+
 ```
 var donedone = require('donedone');
 
@@ -60,6 +62,57 @@ setTimeout(function() {
 
 cd1.signal();
 
+```
+
+# Constructor(total [, flags])
+
+Create a new donedone instance.
+
+```
+{
+  timeout: int|milliseconds
+  ,inactivity: int|milliseconds
+  ,indefinite: boolean //default is true
+}
+```
+
+# Methods
+
+## add(count || 1)
+
+Increment the total number of signals that need to be completed. If no count is specified, 1 is used.
+
+## signal(count || 1)
+
+Signal that something has completed. If no count is specified, 1 is used.
+
+# Events
+
+## complete(err, donedoneObject)
+
+Fired when the total (new donedone() or dd.add()) is equal to or greater than the count (dd.signal()) for self and all subtasks.
+
+## signal(err, count, total, donedoneObject)
+
+Fired whenever dd.signal() is called.
+
+## timeout(err);
+
+This event will fire if donedone is not completed within the N milliseconds specified.
+
+## inactivity(err)
+
+Inactivity fires if no dd.signal() has been called in N milliseconds.
+
+## indefinite(err, timestamp)
+
+Indefinite fires whenever the internal indefinite callback is executed schedules itself to run again.
+
+```
+var dd = new (require('donedone'))(1);
+dd.on('indefinite', function(err, timestamp) {
+  console.log('Indefintely waiting:', (new Date(timestamp)).toString());
+});
 ```
 
 # License
