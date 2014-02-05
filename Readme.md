@@ -38,26 +38,26 @@ for(var i = 0; i < num_jobs; i++) {
 countdown.signal();
 ```
 
-## Initialization of resources
-
-*Subject to change. Working on converting to use the donedone prototype instead of a custom object.*
+## Assign subtasks for specific resources
 
 ```
 var donedone = require('donedone');
 
 var cd1 = new donedone(1);
+var cbdbinit = new donedone(1);
+var cdotherinit = new donedone(1);
 cd1.on('complete', function() {
   //start doing awesome things
 });
 
-cd1.addSubTask('dbinit');
+cd1.addSubTask('dbinit', cbdbinit);
 setTimeout(function() {
-  cd1.signalSubTask('dbinit');
+  cbdbinit.signal();
 }, 1337);
 
-cd1.addSubTask('otherinit');
+cd1.addSubTask('otherinit', cdotherinit);
 setTimeout(function() {
-  cd1.signalSubTask('otherinit');
+  cdotherinit.signal();
 }, 2500);
 
 cd1.signal();
@@ -106,7 +106,7 @@ Inactivity fires if no dd.signal() has been called in N milliseconds.
 
 ## indefinite(err, timestamp)
 
-Indefinite fires whenever the internal indefinite callback is executed schedules itself to run again.
+Indefinite fires whenever the internal indefinite callback is executed and schedules itself to run again.
 
 ```
 var dd = new (require('donedone'))(1);
