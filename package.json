@@ -1,6 +1,6 @@
 {
   "name": "donedone",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Donedone is meant for instances where complex chains or an unknown number of events need to be completed.",
   "main": "index.js",
   "directories": {
